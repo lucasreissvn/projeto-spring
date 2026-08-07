@@ -1,0 +1,28 @@
+package com.spring.projeto.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.spring.projeto.entities.Category;
+import com.spring.projeto.repositories.CategoryRepository;
+
+@Service
+public class CategoryService {
+	
+	private final CategoryRepository repository;
+
+	CategoryService(CategoryRepository repository) {
+		this.repository = repository;
+	}
+	
+	public List<Category>findAll(){
+		return repository.findAll();
+	}
+	
+	public Category findById(Long id) {
+		Optional<Category> obj =  repository.findById(id);
+		return obj.get();
+	}
+}
